@@ -27,9 +27,11 @@ def emp_todo(employee_id):
     filename = f"{employee_id}.csv"
     with open(filename, mode="w", newline="") as csv_file:
         writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
-        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        writer.writerow(["USER_ID", "USERNAME",
+                         "TASK_COMPLETED_STATUS", "TASK_TITLE"])
         for task in tdata:
-            writer.writerow([employee_id, employee_name, task["completed"], task["title"]])
+            writer.writerow([employee_id, employee_name,
+                             task["completed"], task["title"]])
 
 
 if __name__ == "__main__":
