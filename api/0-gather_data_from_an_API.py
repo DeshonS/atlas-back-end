@@ -11,7 +11,7 @@ def emp_todo(employee_id):
         employee_id)
     user_response = requests.get(uurl)
     user_data = user_response.json()
-    employee_name = user_data.get("name")
+    employee_name = user_data['username']
     td_response = requests.get(turl)
     tdata = td_response.json()
 
