@@ -13,7 +13,8 @@ def employee_todo():
     request = requests.get(todo).json()
     tasks = [task.get('title') for task in request if task.get('completed')
              is True]
-    print('Employee {} is done with tasks({}/{}):'.format(name, len(tasks), len(request)))
+    print('Employee {} is done with tasks({}/{}):'.
+          format(name, len(tasks), len(request)))
     print('\n'.join('\t {}'.format(task) for task in tasks))
 
 
