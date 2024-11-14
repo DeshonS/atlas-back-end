@@ -6,8 +6,8 @@ import sys
 
 def get_employee_todo_progress(employee_id):
     user_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-    todos_url = f"https://jsonplaceholder.typicode.com
-    /todos?userId={employee_id}"
+    todos_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
+        employee_id)
 
     user_response = requests.get(user_url)
     if user_response.status_code != 200:
