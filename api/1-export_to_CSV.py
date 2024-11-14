@@ -2,6 +2,7 @@
 """Employee ID API"""
 import requests
 import sys
+import csv
 
 
 def emp_todo(employee_id):
@@ -23,6 +24,12 @@ def emp_todo(employee_id):
         employee_name, number_of_finished_tasks, total_tasks))
     for task in completed_tasks:
         print("\t {}".format(task['title']))
+    filename = f"{employee_id}.csv"
+    with open(filename, mode="w", newline="") as csv_file:
+        writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+        writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        for task in tdata:
+            writer.writerow([employee_id, employee_name, task["completed"], task["title"]])
 
 
 if __name__ == "__main__":

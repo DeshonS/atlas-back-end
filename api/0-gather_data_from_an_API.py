@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Employee ID API"""
 import requests
+import csv
 import sys
 
 
