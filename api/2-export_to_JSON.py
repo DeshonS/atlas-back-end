@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Employee Task API"""
-import csv
+import json
 import requests
 import sys
 
@@ -10,7 +10,7 @@ def employee_todo():
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
     todo = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(
         user_id)
-    name = requests.get(user_url).json().get('username')
+    name = requests.get(user_url).json().get('name')
     request = requests.get(todo).json()
 
     with open('{}.csv'.format(user_id), 'w+') as file:
