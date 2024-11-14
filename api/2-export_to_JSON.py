@@ -10,14 +10,17 @@ def employee_todo():
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'.format(user_id)
     todo = 'https://jsonplaceholder.typicode.com/todos/?userId={}'.format(
         user_id)
-    name = requests.get(user_url).json().get('name')
+    name = requests.get(user_url).json().get('username')
     request = requests.get(todo).json()
+    tasks = []
 
-    with open('{}.csv'.format(user_id), 'w+') as file:
+    with open('{}.json'.format(user_id), 'w+') as file:
         for todo in request:
-            info = '"{}","{}","{}","{}"\n'.format(
-                user_id, name, todo.get('completed'), todo.get('title'))
-            file.write(info)
+            task = {"task": todo.get("title"),
+                    "completed": todo.get("completed"), "username": name}
+            tasks.append(task)
+        info = {user_id: tasks}
+        file.write(json.dumps(info))
 
 
 if __name__ == "__main__":
