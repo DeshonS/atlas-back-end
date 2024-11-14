@@ -19,10 +19,10 @@ def emp_todo(employee_id):
     completed_tasks = [task for task in tdata if
                        task["completed"]]
     number_of_finished_tasks = len(completed_tasks)
-    print("Employee {} is done with tasks({}/{}):".format(number_of_finished_tasks, total_tasks))
+    print("Employee {} is done with tasks({}/{}):".format(
+        number_of_finished_tasks, total_tasks))
     for task in completed_tasks:
         print("\t {}".format({task['title']}))
-
 
     if __name__ == "__main__":
         emp_todo(employee_id)
